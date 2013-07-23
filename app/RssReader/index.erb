@@ -1,0 +1,22 @@
+<div data-role="page">
+  <div data-role="header" data-position="inline">
+    <h1>RssReaders</h1>
+    <a href="<%= Rho::RhoConfig.start_path %>" class="ui-btn-left" data-icon="home" data-direction="reverse">
+      ホーム
+      </a>
+    <a href="<%= url_for :action => :refresh %>" class="ui-btn-right" data-icon="plus">
+        更新
+    </a>
+  </div>
+  <div data-role="content">
+    <ul data-role="listview">
+      <% @rssreaders.each do |rssreader| %>
+        <li>
+          <a href="<%= url_for :action => :show, :id => rssreader.object %>">
+            <%= rssreader.title %>
+          </a>
+        </li>
+      <% end %> 
+    </ul>
+  </div>
+</div>
