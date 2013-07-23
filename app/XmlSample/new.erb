@@ -1,0 +1,21 @@
+<div data-role="page">
+  <div data-role="header" data-position="inline">
+    <h1>新規作成</h1>
+    <a href="<%= url_for :action => :index %>" class="ui-btn-left" data-icon="back" data-direction="reverse">
+      キャンセル
+    </a>
+  </div>
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :create %>">
+      <div data-role="fieldcontain">
+        <label for="xmlsample[title]" class="fieldLabel">タイトル</label>
+        <input type="text" id="xmlsample[title]" name="xmlsample[title]" <%= placeholder("タイトル") %> />
+      </div>
+      <div data-role="fieldcontain">
+        <label for="xmlsample[content]" class="fieldLabel">本文</label>
+        <textarea id="xmlsample[content]" name="xmlsample[content]" <%= placeholder("本文") %> ></textarea>
+      </div>
+      <input type="submit" value="作成する"/>
+    </form>
+  </div>
+</div>

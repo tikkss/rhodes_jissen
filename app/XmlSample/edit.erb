@@ -1,0 +1,26 @@
+<div data-role="page">
+  <div data-role="header" data-position="inline">
+    <h1>編集画面</h1>
+    <a href="<%= url_for :action => :show, :id => @xmlsample.object %>" class="ui-btn-left" data-icon="back" data-direction="reverse">
+      キャンセル
+    </a>
+    <a href="<%= url_for :action => :delete, :id => @xmlsample.object %>" class="ui-btn-right" data-icon="delete" data-direction="reverse">
+      削除
+    </a>
+  </div>
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :update %>">
+      <input type="hidden" name="id" value="<%= @xmlsample.id %>"/>
+      <div data-role="fieldcontain">
+        <label for="xmlsample[title]" class="fieldLabel">タイトル</label>
+        <input type="text" id="xmlsample[title]" name="xmlsample[title]" value="<%= @xmlsample.title %>" <%= placeholder( "タイトル" ) %> />
+      </div>
+
+      <div data-role="fieldcontain">
+        <label for="xmlsample[content]" class="fieldLabel">本文</label>
+        <textarea id="xmlsample[content]" name="xmlsample[content]" <%= placeholder( "本文" ) %>><%= @xmlsample.content %></textarea>
+      </div>
+      <input type="submit" value="更新"/>
+    </form>
+  </div>
+</div>
