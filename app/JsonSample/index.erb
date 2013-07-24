@@ -8,6 +8,12 @@
         新規作成
     </a>
   </div>
+  <div data-role="navbar">
+    <ul>
+      <li><a href=<%= url_for(:action => :index, :query => {:page => @page - 1}) %>>前へ</a></li>
+      <li><a href=<%= url_for(:action => :index, :query => {:page => @page + 1}) %>>次へ</a></li>
+    </ul>
+  </div>
   <div data-role="content">
     <ul data-role="listview">
       <% @jsonsamples.each do |jsonsample| %>

@@ -15,7 +15,8 @@ class JsonSampleController < Rho::RhoController
       Alert.show_popup("データの取得に失敗しました。")
     end
     
-    @jsonsamples = JsonSample.find(:all)
+    @page = @params["page"] ? @params["page"].to_i : 0
+    @jsonsamples = JsonSample.paginate(:page => @page, :per_page => 3)
     render :back => '/app'
   end
   
