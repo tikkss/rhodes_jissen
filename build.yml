@@ -23,5 +23,6 @@ android:
   capabilities:
   - camera
   - pim
+  - calender
 
 extensions: ["json", "another-extension", "rexml", "set"]
