@@ -20,5 +20,7 @@ symbian:
   uid: '0xe5e02abe'
 android:
   version: 2.1
+  capabilities:
+  - camera
 
 extensions: ["json", "another-extension", "rexml", "set"]

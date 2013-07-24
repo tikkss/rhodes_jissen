@@ -15,5 +15,8 @@
         <div class="itemValue"><%= @jsonsample.content %></div>
       </li>
     </ul>
+    <a type="button" href="<%= url_for(:action => :take_picture, :id => @jsonsample.object) %>">
+      カメラ起動
+    </a>
   </div>
 </div>

@@ -103,4 +103,42 @@ class JsonSampleController < Rho::RhoController
     Alert.show_popup(msg)
     WebView.navigate(url_for(:action => :index))
   end
+  
+  def take_picture
+    id = strip_braces(@params["id"])
+    Camera::take_picture(url_for(:action => :upload, :id => id))
+    redirect :action => :show, :id => :id
+  end
+  
+  def upload
+    @jsonsample = JsonSample.find(@params["id"])
+    id = @jsonsample.id
+    if @params["status"] == "ok"
+      url = Rho::RhoApplication.get_blob_path(@params["image_uri"])
+      http = Rho::AsyncHttp.upload_file(
+        :url => "#{SERVER_ADDRESS}/json_samples/#{id}/upload.json",
+        :multipart => [
+          {
+            :filename => url,
+            :name => 'file_path',
+            :content_type => 'application/octet-stream'
+          },
+          {
+            :body => File.basename(@params["image_uri"]),
+            :name => "file_name",
+            :content_type => "plain/text"
+          }
+        ]
+      )
+      
+      if http["status"] == "ok"
+        body = Rho::JSON.parse(http["body"])
+        Alert.show_popup(body["msg"])
+      else
+        Alert.show_popup("アップロードに失敗しました。")
+      end
+    end
+    
+    WebView.navigate(url_for(:action => :show, :id => @jsonsample.object))
+  end
 end
