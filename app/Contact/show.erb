@@ -1,0 +1,57 @@
+<div data-role="page" data-add-back-btn="false">
+  <div data-role="header" data-position="inline">
+    <h1>詳細</h1>
+    <a href="<%= url_for :action => :list %>" class="ui-btn-left" data-icon="arrow-l" data-direction="reverse">戻る</a>
+    <a href="<%= url_for :action => :edit, :id => @contact["id"] %>" class="ui-btn-right" data-icon="star">編集</a>
+  </div>
+  <div data-role="content">
+    <div data-role="collapsible">
+      <h3>共通項目</h3>
+      <ul data-role="listview">
+        <li>
+          <div class="itemLabel">姓</div>
+          <div class="itemValue"><%= @contact["last_name"] %></div>
+        </li>
+        <li>
+          <div class="itemLabel">名</div>
+          <div class="itemValue"><%= @contact["first_name"] %></div>
+        </li>
+        <li>
+          <div class="itemLabel">携帯電話番号</div>
+          <div class="itemValue"><%= @contact["mobile_number"] %></div>
+        </li>
+        <li>
+          <div class="itemLabel">（仕事）電話番号</div>
+          <div class="itemValue"><%= @contact["business_number"] %></div>
+        </li>
+        <li>
+          <div class="itemLabel">E-メールアドレス</div>
+          <div class="itemValue"><%= @contact["email_address"] %></div>
+        </li>
+        <li>
+          <div class="itemLabel">会社名</div>
+          <div class="itemValue"><%= @contact["company_name"] %></div>
+        </li>
+        <li>
+          <div class="itemLabel"></div>
+          <div class="itemValue"><%= @contact[""] %></div>
+        </li>
+      </ul>
+    </div>
+  <% if System::get_property('platform') == "ANDROID" %>
+    <div data-role="collapsible">
+      <h3>Android用の項目</h3>
+      <ul data-role="listview">
+        <li>
+          <div class="itemLabel">表示名</div>
+          <div class="itemValue"><%= @contact["display_name"] %></div>
+        </li>
+        <li>
+          <div class="itemLabel">（自宅）電話番号</div>
+          <div class="itemValue"><%= @contact["home_number"] %></div>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+</div>

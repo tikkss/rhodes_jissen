@@ -1,0 +1,22 @@
+<div data-role="page">
+  <div data-role="header" data-position="inline">
+    <h1>JsonSamples</h1>
+    <a href="<%= Rho::RhoConfig.start_path %>" class="ui-btn-left" data-icon="home" data-direction="reverse">
+      ホーム
+      </a>
+    <a href="<%= url_for :action => :new %>" class="ui-btn-right" data-icon="plus">
+        新規作成
+    </a>
+  </div>
+  <div data-role="content">
+    <ul data-role="listview">
+      <% @contacts.each do |key, contact| %>
+        <li>
+          <a href="<%= url_for :action => :show, :id => contact["id"] %>">
+            <%= contact["display_name"] %>
+          </a>
+        </li>
+      <% end %> 
+    </ul>
+  </div>
+</div>

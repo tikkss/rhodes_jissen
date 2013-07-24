@@ -1,0 +1,33 @@
+<div data-role="page" theme="b">
+
+  <div data-role="header" data-position="inline">
+    <h1>電話帳一覧</h1>
+    <a href="<%= url_for(:action => :index) %>" class="ui-btn-left" data-icon="arrow-l" data-direction="reverse">
+      メニューへ
+    </a>
+  </div>
+  
+  <div data-role="navbar">
+    <ul>
+      <% if @prev_page %>
+        <li><a href="<%= url_for(:action => :paginate, :query => {:page => @prev_page}) %>" data-direction="reverse" >前</a></li>
+      <% end %>
+      <% if @next_page %>
+        <li><a href="<%= url_for(:action => :paginate, :query => {:page => @next_page}) %>">次</a></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div data-role="content">
+    <ul data-role="listview">
+        <% @contacts.each do |key, contact| %>
+          <li>
+            <a href="<%= url_for :action => :show, :id => contact["id"] %>">
+              <%= contact["display_name"] %>
+            </a>
+          </li>
+        <% end %>
+    </ul>
+  </div>
+
+</div>

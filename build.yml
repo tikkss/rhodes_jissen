@@ -22,5 +22,6 @@ android:
   version: 2.1
   capabilities:
   - camera
+  - pim
 
 extensions: ["json", "another-extension", "rexml", "set"]
